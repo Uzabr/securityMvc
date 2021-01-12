@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+
+<div>
+    <a th:href="@{/admin}">Admin Page</a>
+    <a th:href="@{/user}">User Page</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+
+<div>
+    <form th:action="@{/edit}" method="post" th:object="${loadUser}">
+        <input type="hidden" name="id" th:value="${loadUser.id}">
+
+        <fieldset>
+            <p>
+            <input type="text" name="firstName" th:id="firstName" th:value="${loadUser.firstName}"
+            placeholder="First Name"/>
+            </p>
+            <p>
+                <input type="text" name="lastName" th:id="lastName" th:value="${loadUser.lastName}"
+                placeholder="Last Name"/>
+            </p>
+            <p>
+                <input type="number" name="age" th:id="age" th:value="${loadUser.age}" placeholder="Age"/>
+            </p>
+            <p>
+                <input type="date" name="birthDate" th:id="birthDate" th:value="${loadUser.birthDate}"
+                placeholder="Birth Date"/>
+            </p>
+            <p>
+                <input type="email" name="email" th:id="email" th:value="${loadUser.email}" placeholder="Email"/>
+            </p>
+            <p>
+                <input type="text" name="address" th:id="address" th:value="${loadUser.address}" placeholder="Address"/>
+            </p>
+            <p>
+                <input type="password" name="password" th:id="password" th:value="${loadUser.password}" placeholder="Password"/>
+            </p>
+            <p>
+                <label th:for="roles">Role</label>
+                <select multiple name="roles" size="3" th:object="${loadRoles}"
+                        th:id="roles" required th:value="${name}">
+                    <option disabled>Select Role</option>
+                    <option th:each="role:${loadRoles}"
+                            th:value="${role}"
+                            th:utext="${role.name}"></option>
+                </select>
+            </p>
+        </fieldset>
+        <input type="submit" value="Edit User">
+    </form>
+</div>
+</body>
+</html>

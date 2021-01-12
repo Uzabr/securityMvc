@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <head>
+        <title>Users</title>
+    </head>
+<body>
+    <div>
+        <a th:href="@{/logout}">Logout</a>
+        <br/>
+        <br/>
+        <a th:href="@{/admin}"> Home page </a>
+    </div>
+<h1 th:text="Users"></h1>
+<br/>
+<div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Birth Date</th>
+            <th>Email</th>
+            <th>Address</th>
+
+        </tr>
+        <tr th:each="usr:${userlist}">
+            <td th:utext="${usr.getId()}"></td>
+            <td th:utext="${usr.getFirstName()}"></td>
+            <td th:utext="${usr.getLastName()}"></td>
+            <td th:utext="${usr.getAge()}"></td>
+            <td th:utext="${usr.getBirthDate()}"></td>
+            <td th:utext="${usr.getEmail()}"></td>
+            <td th:utext="${usr.getAddress()}"></td>
+        </tr>
+
+    </table>
+</div>
+</body>
